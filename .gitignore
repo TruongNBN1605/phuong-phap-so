@@ -1,0 +1,19 @@
+# Compiled python files
+*.pyc
+__pycache__/
+
+# virtualenv
+venv/
+ENV/
+
+# Logs
+*.log
+
+# Build files
+build/
+dist/
+*.egg-info/
+
+# Other
+*.swp
+.DS_Store
