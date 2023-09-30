@@ -4,14 +4,14 @@ import pandas as pd
 from tabulate import tabulate
 
 """ ---------------------------------- Defined ----------------------------------  """
-def BangTiSaiPhanCachDeu(xValues, yValues):
+def taoBangTiSaiPhanCachDeu(xValues, yValues):
     """
-    Tính các hiệu phân chia cho các mốc cách đều.
+    Tính các tỉ sai phân cho các mốc cách đều.
     Args:
-        x_values: Danh sách các giá trị x (các điểm dữ liệu đã biết, cách đều).
-        y_values: Danh sách các giá trị y (giá trị của hàm tại các điểm đã biết).
+        yValues: Danh sách các giá trị x (các điểm dữ liệu đã biết, cách đều).
+        yValues: Danh sách các giá trị y (giá trị của hàm tại các điểm đã biết).
     Returns:
-        Ma trận các hiệu phân chia.
+        Ma trận các tỉ sai phân.
     """
     n = len(xValues)
     divided_diff = [[0] * n for _ in range(n)]
@@ -24,14 +24,14 @@ def BangTiSaiPhanCachDeu(xValues, yValues):
 
     return divided_diff
 
-def BangTiSaiPhanKhongCachDeu(xValues, yValues):
+def taoBangTiSaiPhanKhongCachDeu(xValues, yValues):
     """
-    Tính các hiệu phân chia cho các mốc không cách đều.
+    Tính các tỉ sai phân cho các mốc không cách đều.
     Args:
-        x_values: Danh sách các giá trị x (các điểm dữ liệu đã biết, không cách đều).
-        y_values: Danh sách các giá trị y (giá trị của hàm tại các điểm đã biết).
+        xValues: Danh sách các giá trị x (các điểm dữ liệu đã biết, không cách đều).
+        yValues: Danh sách các giá trị y (giá trị của hàm tại các điểm đã biết).
     Returns:
-        Ma trận các hiệu phân chia.
+        Ma trận các tỉ sai phân.
     """
     n = len(xValues)
     divided_diff = [[0] * n for _ in range(n)]
@@ -48,8 +48,8 @@ def NoiSuyNewTon(xValues, yValues, x, equallySpaced=True):
     """
     Thực hiện nội suy Newton-Gregory để tính giá trị xấp xỉ của hàm tại điểm x.
     Args:
-        x_values: Danh sách các giá trị x (các điểm dữ liệu đã biết).
-        y_values: Danh sách các giá trị y (giá trị của hàm tại các điểm đã biết).
+        xValues: Danh sách các giá trị x (các điểm dữ liệu đã biết).
+        yValues: Danh sách các giá trị y (giá trị của hàm tại các điểm đã biết).
         x: Giá trị x mà bạn muốn tính giá trị xấp xỉ của hàm tại đó.
         equallySpaced: True nếu các mốc cách đều, False nếu không cách đều.
     Returns:
@@ -57,9 +57,9 @@ def NoiSuyNewTon(xValues, yValues, x, equallySpaced=True):
     """
     n = len(xValues)
     if equallySpaced:
-        divided_diff = BangTiSaiPhanCachDeu(xValues, yValues)
+        divided_diff = taoBangTiSaiPhanCachDeu(xValues, yValues)
     else:
-        divided_diff = BangTiSaiPhanKhongCachDeu(xValues, yValues)
+        divided_diff = taoBangTiSaiPhanKhongCachDeu(xValues, yValues)
     
     result = divided_diff[0][0]
     product_term = 1
