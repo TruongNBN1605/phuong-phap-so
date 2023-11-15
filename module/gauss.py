@@ -44,8 +44,8 @@ def NoiSuyGauss(xValues, yValues, x, forward=True):
     n = len(xValues)
 
     # Xử lý dữ liệu bảng tỉ sai phân
-    data = [[xValues[i]] + [BangTiSaiPhan[i][j] for j in range(n - i)] for i in range(n)]
-    df = pd.DataFrame(data, columns=[f'x'] + [f'Δ^{i}y' for i in range(n)])
+    # data = [[xValues[i]] + [BangTiSaiPhan[i][j] for j in range(n - i)] for i in range(n)]
+    # df = pd.DataFrame(data, columns=[f'x'] + [f'Δ^{i}y' for i in range(n)])
 
     start = 0 if forward else n - 1 
     result = yValues[start]
@@ -55,7 +55,7 @@ def NoiSuyGauss(xValues, yValues, x, forward=True):
         result += (u * BangTiSaiPhan[start][i]) / (math.factorial(i)) 
         u *= (u + (-1 if forward else 1 )) / i
     
-    return result, df
+    return result# , df
 
 """ ---------------------------------- Program ---------------------------------- """
 def ProgramNoiSuyGauss(xKnown, yKnown, forward=True):
@@ -72,17 +72,17 @@ def ProgramNoiSuyGauss(xKnown, yKnown, forward=True):
     symbolic = sp.symbols('x')
 
     HamXapXiGauss, BangTiSaiPhan = NoiSuyGauss(xKnown, yKnown, symbolic, forward)
-    HamRutGon = sp.simplify(HamXapXiGauss)
+    # HamRutGon = sp.simplify(HamXapXiGauss)
 
     # Bảng tỉ sai phân
-    print("Bảng tỉ sai phân lùi:")
-    print(tabulate(BangTiSaiPhan, headers = "keys", tablefmt="psql", showindex=False))
+    # print("Bảng tỉ sai phân:")
+    # print(tabulate(BangTiSaiPhan, headers = "keys", tablefmt="psql", showindex=False))
 
     # In đa thức kết quả
-    print("Đa thức kết quả:")
-    sp.pprint(HamRutGon, use_unicode=True)
+    # print("Đa thức kết quả:")
+    # sp.pprint(HamRutGon, use_unicode=True)
 
     # Vẽ đồ thị hàm đã biết và đa thức kết quả
-    drawPolynomial(HamRutGon, symbolic, xKnown, yKnown)
+    # drawPolynomial(HamRutGon, symbolic, xKnown, yKnown)
 
-    return HamRutGon, symbolic
+    return HamXapXiGauss, symbolic

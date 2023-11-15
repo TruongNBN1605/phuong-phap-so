@@ -1,6 +1,6 @@
 import sympy as sp
 from tabulate import tabulate
-from module import ProgramNoiSuyLagrange, ProgramHorner, ProgramNoiSuyNewton,ProgramNoiSuyGauss
+from module import ProgramNoiSuyLagrange, ProgramHorner, ProgramNoiSuyNewton, ProgramNoiSuyGauss
 from supporter import getPolynomialValue
 
 """ Fake Data """
@@ -22,7 +22,7 @@ yKhongCachDeu = [0.0, 1.0, 8.0, 27.0, 216.0]
 # HamNewtonKhongCachDeu, symbolic = ProgramNoiSuyNewton(xKhongCachDeu, yKhongCachDeu, False)
 # getPolynomialValue(HamNewtonKhongCachDeu, symbolic, 6)
 
-HamGauss, symbolic = ProgramNoiSuyGauss(xCachDeu, yCachDeu, True)
+HamGauss, symbolic = ProgramNoiSuyGauss(xCachDeu, yCachDeu, False)
 getPolynomialValue(HamGauss, symbolic, 5)
 
 """ Nhập enter để kết thúc """

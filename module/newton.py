@@ -64,20 +64,20 @@ def NoiSuyNewTon(xValues, yValues, x, equallySpaced=True):
     result = divided_diff[0][0]
     product_term = 1
 
-    table_data = []  # Dữ liệu cho bảng tỉ sai phân
+    # table_data = []  # Dữ liệu cho bảng tỉ sai phân
     for i in range(n):
-        row = [f'f[x{i}]']
-        for j in range(n - i):
-            row.append(divided_diff[i][j])
-        table_data.append(row)
+        # row = [f'f[x{i}]']
+        # for j in range(n - i):
+        #     row.append(divided_diff[i][j])
+        # table_data.append(row)
 
         if i < n - 1:
             product_term *= (x - xValues[i])
             result += divided_diff[0][i + 1] * product_term
     
-    df = pd.DataFrame(table_data, columns=[f'x{i}' for i in range(n + 1)])
+    # df = pd.DataFrame(table_data, columns=[f'x{i}' for i in range(n + 1)])
     
-    return result, df
+    return result# , df
 
 """ ---------------------------------- Program ---------------------------------- """
 def ProgramNoiSuyNewton(xKnown, yKnown, equallySpaced=True):
@@ -92,16 +92,16 @@ def ProgramNoiSuyNewton(xKnown, yKnown, equallySpaced=True):
     """
     symbolic = sp.symbols('x')
     HamXapXiNewton, BangTiSaiPhan = NoiSuyNewTon(xKnown, yKnown, symbolic, equallySpaced)
-    HamRutGon = sp.simplify(HamXapXiNewton)
+    # HamRutGon = sp.simplify(HamXapXiNewton)
     # Bảng tỉ sai phân
-    print("Bảng tỉ sai phân:")
-    print(tabulate(BangTiSaiPhan, headers='keys', tablefmt='psql'))
+    # print("Bảng tỉ sai phân:")
+    # print(tabulate(BangTiSaiPhan, headers='keys', tablefmt='psql'))
 
     # In đa thức kết quả
-    print("Đa thức kết quả:")
-    sp.pprint(HamRutGon, use_unicode=True)
+    # print("Đa thức kết quả:")
+    # sp.pprint(HamRutGon, use_unicode=True)
 
     # Vẽ đồ thị hàm đã biết và đa thức kết quả
-    drawPolynomial(HamRutGon, symbolic, xKnown, yKnown)
+    # drawPolynomial(HamRutGon, symbolic, xKnown, yKnown)
 
-    return HamRutGon, symbolic
+    return HamXapXiNewton, symbolic

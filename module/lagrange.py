@@ -39,12 +39,12 @@ def ProgramNoiSuyLagrange(xKnown, yKnown):
 
     # Thực hiện nội suy Lagrange và đưa ra đa thức kết quả
     HamSapxiLagrange = NoiSuyLagrange(xKnown, yKnown, symbolic)
-    HamRutGon = sp.simplify(HamSapxiLagrange)
+    # HamRutGon = sp.simplify(HamSapxiLagrange)
 
     # In đa thức kết quả
-    print("Đa thức kết quả:")
-    sp.pprint(HamRutGon, use_unicode=True)
+    # print("Đa thức kết quả:")
+    # sp.pprint(HamRutGon, use_unicode=True)
 
     # Vẽ đồ thị hàm đã biết và đa thức kết quả
-    drawPolynomial(HamRutGon, symbolic, xKnown, yKnown)
-    return HamRutGon, symbolic
+    # drawPolynomial(HamRutGon, symbolic, xKnown, yKnown)
+    return HamSapxiLagrange, symbolic
