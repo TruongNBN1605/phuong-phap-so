@@ -1,6 +1,6 @@
 import sympy as sp
 from tabulate import tabulate
-from module import ProgramNoiSuyLagrange, ProgramHorner, ProgramNoiSuyNewton, ProgramNoiSuyGauss
+from module import ProgramNoiSuyLagrange, ProgramHorner, ProgramNoiSuyNewton, ProgramNoiSuyGauss, NoiSuyGauss
 from supporter import getPolynomialValue
 from data.getData import getDataFromExcel
 
@@ -20,8 +20,10 @@ xValues, yValues, x = getDataFromExcel(fileName, filePath)
 # HamNewtonKhongCachDeu, symbolic = ProgramNoiSuyNewton(xValues, yValues, False)
 # getPolynomialValue(HamNewtonKhongCachDeu, symbolic, 6)
 
-HamGauss, symbolic = ProgramNoiSuyGauss(xValues[:5], yValues[:5], True)
-getPolynomialValue(HamGauss, symbolic, x)
+# HamGauss, symbolic = ProgramNoiSuyGauss(xValues, yValues, True)
+# getPolynomialValue(HamGauss, symbolic, x)
+rs = NoiSuyGauss(xValues, yValues, x)
+print(rs)
 
 """ Nhập enter để kết thúc """
 input()
